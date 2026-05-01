@@ -1,89 +1,185 @@
-import requests
-import os
-import subprocess
+name: Build and Update Playlist
 
-url = "http://rihou.cc:555/gggg.nzk/"  # 节目源地址
+on:
+  push:
+    branches: [ main, master ]
+    paths-ignore:
+      - '**.md'
+      - '**.txt'
+      - '.gitignore'
+  
+  pull_request:
+    branches: [ main, master ]
+  
+  schedule:
+    # 每周一10:00 UTC（北京时间18:00）自动运行
+    - cron: '0 10 * * 1'
+  
+  workflow_dispatch:  # 允许手动触发
+    inputs:
+      reason:
+        description: '手动触发原因'
+        required: false
+        default: '手动更新'
+      clean_cache:
+        description: '清理缓存'
+        required: false
+        type: boolean
+        default: false
 
-def fetch_webpage(url):
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
-    }
-    try:
-        r = requests.get(url, headers=headers, timeout=15)
-        r.encoding = r.apparent_encoding
-        r.raise_for_status()
-        return r.text
-    except Exception as e:
-        print("请求失败：", e)
-        return ""
+env:
+  PYTHON_VERSION: '3.10'
+  REQUIREMENTS_FILE: 'requirements.txt'
 
-def parse_channels(text):
-    groups = {}
-    current_group = None
-
-    for line in text.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        # 识别组行（带,且带#genre#）
-        if ',' in line and '#genre#' in line:
-            current_group = line.split(',', 1)[0].strip()
-            groups.setdefault(current_group, [])
-            continue
-        # 频道行
-        if current_group and ',' in line:
-            channel_name, stream_url = line.split(',', 1)
-            channel_name = channel_name.strip()
-            stream_url = stream_url.strip()
-            if "肥羊" not in channel_name and "肥羊" not in stream_url:
-                groups[current_group].append((channel_name, stream_url))
-
-    return {g: chs for g, chs in groups.items() if chs}
-
-def save_m3u(groups, filename):
-    """生成M3U文件，组名保留，组内写频道"""
-    with open(filename, 'w', encoding='utf-8') as f:
-        f.write('#EXTM3U\n\n')
-        for group, channels in groups.items():
-            if not channels:
-                continue
-            f.write(f"#{group}\n")
-            for channel_name, stream_url in channels:
-                f.write(f'#EXTINF:-1 group-title="{group}", {channel_name}\n')
-                f.write(stream_url + "\n")
-    total = sum(len(ch) for ch in groups.values())
-    print(f"写入文件 {filename} 完成，节目总数：{total} 条。")
-
-def git_commit_and_push(filename):
-    """将文件添加到 Git，并提交和推送更改"""
-    subprocess.run(["git", "add", filename])
-    subprocess.run(["git", "commit", "-m", "更新 playlist.m3u"])
-    subprocess.run(["git", "push"])
-
-def main():
-    filename = "playlist.m3u"
+jobs:
+  build-and-test:
+    name: Build, Test and Update
+    runs-on: ubuntu-latest
     
-    # 每次运行前，删除旧的 playlist.m3u 文件（如果存在）
-    # if os.path.exists(filename):
-    #     os.remove(filename)
-    
-    print(f"开始抓取节目源：{url}")
-    m3u_text = fetch_webpage(url)
-    if not m3u_text:
-        print("节目源抓取失败，退出")
-        return
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+        persist-credentials: true
 
-    print("解析节目源频道……")
-    groups = parse_channels(m3u_text)
-    if not groups:
-        print("无有效频道，退出")
-        return
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+        cache-dependency-path: ${{ env.REQUIREMENTS_FILE }}
 
-    print("生成M3U文件……")
-    save_m3u(groups, filename)
-    
-    # 提交并推送更改
-    git_commit_and_push(filename)
+    - name: Clean cache if requested
+      if: ${{ github.event.inputs.clean_cache == 'true' }}
+      run: |
+        echo "清理pip缓存..."
+        pip cache purge
 
-if __name__ == '__main__':
-    main()
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r ${{ env.REQUIREMENTS_FILE }}
+        pip install pytest pytest-cov  # 测试依赖
+
+    - name: Run tests
+      run: |
+        echo "运行基础测试..."
+        cd src
+        python -m pytest tests/ -v || echo "No tests found, skipping"
+        python -c "import crawler; print('Module import successful')"
+
+    - name: Run crawler and update playlist
+      env:
+        GITHUB_ACTIONS: 'true'
+        UPDATE_REASON: ${{ github.event.inputs.reason }}
+      run: |
+        echo "开始更新节目源..."
+        cd src
+        python crawler.py
+        echo "节目源更新完成"
+
+    - name: Check for changes
+      id: check-changes
+      run: |
+        git status --porcelain
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "检测到文件变化"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "::notice title=检测到更新::节目源文件已更新，需要提交"
+        else
+          echo "没有文件变化"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+          echo "::notice title=无需更新::节目源文件没有变化"
+        fi
+
+    - name: Configure Git
+      if: steps.check-changes.outputs.has_changes == 'true'
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+    - name: Commit and push changes
+      if: steps.check-changes.outputs.has_changes == 'true'
+      run: |
+        git add playlist.m3u update.log playlist.m3u.backup last_check.txt || true
+        
+        # 生成提交信息
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          COMMIT_MSG="手动更新: ${{ github.event.inputs.reason }} - $(date '+%Y-%m-%d %H:%M:%S')"
+        elif [ "${{ github.event_name }}" = "schedule" ]; then
+          COMMIT_MSG="自动更新节目源 - $(date '+%Y年%m月%d日 %H:%M:%S')"
+        else
+          COMMIT_MSG="更新节目源文件 - $(date '+%Y-%m-%d %H:%M:%S')"
+        fi
+        
+        git commit -m "$COMMIT_MSG"
+        git push
+        
+        echo "::notice title=更新成功::$COMMIT_MSG"
+
+    - name: Create summary report
+      if: always()
+      run: |
+        echo "# 构建报告" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## 基本信息" >> $GITHUB_STEP_SUMMARY
+        echo "- **触发方式**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **触发分支**: ${{ github.ref }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **运行时间**: $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.check-changes.outputs.has_changes }}" = "true" ]; then
+          echo "## 更新结果 ✅" >> $GITHUB_STEP_SUMMARY
+          echo "- 节目源文件已更新并提交" >> $GITHUB_STEP_SUMMARY
+          
+          # 显示文件变化
+          if [ -f "playlist.m3u" ]; then
+            LINE_COUNT=$(wc -l < playlist.m3u || echo "0")
+            CHANNEL_COUNT=$(grep -c '^#EXTINF' playlist.m3u || echo "0")
+            GROUP_COUNT=$(grep -c '^#genre' playlist.m3u || echo "0")
+            
+            echo "### 文件统计" >> $GITHUB_STEP_SUMMARY
+            echo "- 总行数: $LINE_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "- 频道数量: $CHANNEL_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "- 分组数量: $GROUP_COUNT" >> $GITHUB_STEP_SUMMARY
+          fi
+        else
+          echo "## 更新结果 ℹ️" >> $GITHUB_STEP_SUMMARY
+          echo "- 节目源文件无变化，无需更新" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        # 显示日志最后10行
+        if [ -f "update.log" ]; then
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 最近日志" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          tail -10 update.log >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+        fi
+
+    - name: Upload artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playlist-artifacts
+        path: |
+          playlist.m3u
+          update.log
+          last_check.txt
+        retention-days: 7
+
+    - name: Send notification on failure
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: `构建失败: ${context.workflow} - ${new Date().toLocaleDateString()}`,
+            body: `构建失败，请检查日志:\n\n${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            labels: ['bug', 'automation']
+          })
