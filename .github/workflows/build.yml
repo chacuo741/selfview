@@ -1,49 +1,66 @@
-name: Build playlist
+name: Update Playlist
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 0 */2 * *'   # 每隔2天的0点运行
+    - cron: '0 10 * * 1'
+  workflow_dispatch:
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Cache pip
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: python -m pip install --upgrade pip && pip install -r requirements.txt
-
-      - name: Run crawler
-        run: python src/crawler.py
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          
-          # 先同步远程最新，避免冲突
-          git pull --no-rebase origin main
-
-          # 强制添加并提交 `playlist.m3u`
-          git add playlist.m3u
-          git commit -m "chore: update playlist $(date -u '+%Y-%m-%d %H:%M')" || echo "No changes to commit"
-          git push origin main
+    - name: Checkout with PAT
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.PAT_TOKEN }}
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies
+      run: pip install requests
+    
+    - name: Run crawler
+      run: |
+        cd src
+        python crawler.py
+        
+        echo "检查生成的文件:"
+        ls -la *.m3u *.log *.txt 2>/dev/null || echo "暂时没有找到文件"
+    
+    - name: Move files to root
+      run: |
+        # 移动文件到根目录
+        mv src/playlist.m3u . 2>/dev/null || true
+        mv src/update.log . 2>/dev/null || true
+        mv src/last_check.txt . 2>/dev/null || true
+        
+        echo "根目录文件:"
+        ls -la *.m3u *.log *.txt 2>/dev/null || echo "暂时没有文件"
+    
+    - name: Configure Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+    
+    - name: Commit and push
+      run: |
+        # 添加文件
+        git add *.m3u *.log *.txt 2>/dev/null || true
+        
+        # 检查是否有变化
+        if [ -z "$(git status --porcelain)" ]; then
+          echo "没有文件变化"
+          exit 0
+        fi
+        
+        # 提交
+        COMMIT_MSG="📺 更新节目源 $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "提交信息: $COMMIT_MSG"
+        git commit -m "$COMMIT_MSG"
+        
+        # 推送（使用PAT token）
+        git push origin main
