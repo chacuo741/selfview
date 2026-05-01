@@ -1,3 +1,12 @@
+# 在文件顶部添加路径配置
+import os
+
+# 配置
+URL = "http://rihou.cc:555/gggg.nzk/"
+M3U_FILENAME = "playlist.m3u"
+LAST_CHECK_FILE = "last_check.txt"
+LOG_FILE = "update.log"
+
 def main():
     """主函数"""
     logger.info("=" * 50)
@@ -10,50 +19,30 @@ def main():
         logger.info("距离上次检查不足7天，跳过更新")
         return
     
-    # 确定文件路径
-    # 如果是GitHub Actions环境，在src目录生成
-    # 如果是本地运行，在上级目录生成
-    if os.environ.get('GITHUB_ACTIONS') == 'true':
-        m3u_path = "playlist.m3u"
-        log_path = "update.log"
-        check_path = "last_check.txt"
-    else:
-        m3u_path = "../playlist.m3u"
-        log_path = "../update.log"
-        check_path = "../last_check.txt"
+    # 重要修正：确保文件在当前目录生成
+    # 无论是本地还是GitHub Actions，都在src目录生成
+    m3u_path = M3U_FILENAME  # 在src目录下
+    check_path = LAST_CHECK_FILE
+    log_path = LOG_FILE
     
-    # 读取现有文件内容（用于比较）
-    old_content = ""
-    if os.path.exists(m3u_path):
-        with open(m3u_path, 'r', encoding='utf-8') as f:
-            old_content = f.read()
+    logger.info(f"文件将生成在: {os.path.abspath('.')}")
+    logger.info(f"M3U文件路径: {m3u_path}")
     
     # 获取网页内容
     m3u_text = fetch_webpage(URL)
     if not m3u_text:
         logger.error("无法获取节目源，更新失败")
         return
-    
+
     # 解析频道
+    logger.info("解析节目源频道……")
     groups = parse_channels(m3u_text)
     if not groups:
-        logger.error("没有找到有效频道")
+        logger.error("无有效频道，退出")
         return
-    
-    # 生成新内容
-    new_content = generate_m3u_content(groups)
-    
-    # 检查是否有变化
-    if has_changes(old_content, new_content):
-        logger.info("检测到内容变化，更新文件")
-        save_m3u(groups, m3u_path)
-        
-        # 如果是GitHub Actions环境，执行Git操作
-        if os.environ.get('GITHUB_ACTIONS') == 'true':
-            # 在GitHub Actions中，文件已在当前目录
-            pass
-    else:
-        logger.info("内容无变化，无需更新")
+
+    logger.info("生成M3U文件……")
+    save_m3u(groups, m3u_path)
     
     # 保存检查时间
     with open(check_path, 'w') as f:
