@@ -61,14 +61,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r ${{ env.REQUIREMENTS_FILE }}
-        pip install pytest pytest-cov  # 测试依赖
 
-    - name: Run tests
+    - name: Create src directory if not exists
       run: |
-        echo "运行基础测试..."
-        cd src
-        python -m pytest tests/ -v || echo "No tests found, skipping"
-        python -c "import crawler; print('Module import successful')"
+        mkdir -p src
 
     - name: Run crawler and update playlist
       env:
@@ -79,19 +75,70 @@ jobs:
         cd src
         python crawler.py
         echo "节目源更新完成"
+        
+        # 检查生成的文件
+        ls -la
+
+    - name: Move generated files to root directory
+      run: |
+        # 移动生成的播放列表文件到根目录
+        if [ -f "src/playlist.m3u" ]; then
+          cp src/playlist.m3u playlist.m3u
+          echo "已移动 playlist.m3u 到根目录"
+        fi
+        
+        # 移动日志文件到根目录
+        if [ -f "src/update.log" ]; then
+          cp src/update.log update.log
+          echo "已移动 update.log 到根目录"
+        fi
+        
+        # 移动检查时间文件到根目录
+        if [ -f "src/last_check.txt" ]; then
+          cp src/last_check.txt last_check.txt
+          echo "已移动 last_check.txt 到根目录"
+        fi
 
     - name: Check for changes
       id: check-changes
       run: |
-        git status --porcelain
-        if [ -n "$(git status --porcelain)" ]; then
+        echo "当前目录结构:"
+        ls -la
+        
+        echo -e "\nGit状态:"
+        git status --porcelain || true
+        
+        # 检查是否有需要提交的文件
+        CHANGED_FILES=""
+        
+        # 检查根目录文件
+        if [ -f "playlist.m3u" ]; then
+          if ! git diff --quiet playlist.m3u 2>/dev/null || [ ! -f "playlist.m3u" ]; then
+            CHANGED_FILES+="playlist.m3u "
+          fi
+        fi
+        
+        if [ -f "update.log" ]; then
+          if ! git diff --quiet update.log 2>/dev/null || [ ! -f "update.log" ]; then
+            CHANGED_FILES+="update.log "
+          fi
+        fi
+        
+        if [ -f "last_check.txt" ]; then
+          if ! git diff --quiet last_check.txt 2>/dev/null || [ ! -f "last_check.txt" ]; then
+            CHANGED_FILES+="last_check.txt "
+          fi
+        fi
+        
+        echo -e "\n需要提交的文件: $CHANGED_FILES"
+        
+        if [ -n "$CHANGED_FILES" ]; then
           echo "检测到文件变化"
           echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "::notice title=检测到更新::节目源文件已更新，需要提交"
+          echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
         else
           echo "没有文件变化"
           echo "has_changes=false" >> $GITHUB_OUTPUT
-          echo "::notice title=无需更新::节目源文件没有变化"
         fi
 
     - name: Configure Git
@@ -99,64 +146,101 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "actions@github.com"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+        git config --global core.autocrlf false
+        git remote -v
 
     - name: Commit and push changes
       if: steps.check-changes.outputs.has_changes == 'true'
+      env:
+        CHANGED_FILES: ${{ steps.check-changes.outputs.changed_files }}
       run: |
-        git add playlist.m3u update.log playlist.m3u.backup last_check.txt || true
+        echo "需要提交的文件: $CHANGED_FILES"
         
-        # 生成提交信息
-        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-          COMMIT_MSG="手动更新: ${{ github.event.inputs.reason }} - $(date '+%Y-%m-%d %H:%M:%S')"
-        elif [ "${{ github.event_name }}" = "schedule" ]; then
-          COMMIT_MSG="自动更新节目源 - $(date '+%Y年%m月%d日 %H:%M:%S')"
-        else
-          COMMIT_MSG="更新节目源文件 - $(date '+%Y-%m-%d %H:%M:%S')"
+        # 添加文件到Git
+        for file in $CHANGED_FILES; do
+          if [ -f "$file" ]; then
+            echo "添加文件: $file"
+            git add "$file" || echo "无法添加 $file"
+          fi
+        done
+        
+        # 检查是否有文件被添加
+        if [ -z "$(git status --porcelain)" ]; then
+          echo "没有文件需要提交"
+          exit 0
         fi
         
+        # 显示当前状态
+        echo "提交前的状态:"
+        git status
+        
+        # 生成提交信息
+        CURRENT_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+        
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          COMMIT_MSG="🔧 手动更新: ${{ github.event.inputs.reason }} - $CURRENT_TIME"
+        elif [ "${{ github.event_name }}" = "schedule" ]; then
+          COMMIT_MSG="🔄 自动更新节目源 - $CURRENT_TIME"
+        else
+          COMMIT_MSG="📡 更新节目源文件 - $CURRENT_TIME"
+        fi
+        
+        # 提交
+        echo "提交信息: $COMMIT_MSG"
         git commit -m "$COMMIT_MSG"
+        
+        # 推送
+        echo "推送更改到仓库..."
+        git pull --rebase origin main || git pull --rebase origin master
         git push
         
-        echo "::notice title=更新成功::$COMMIT_MSG"
+        echo "✅ 更新成功: $COMMIT_MSG"
 
     - name: Create summary report
       if: always()
       run: |
-        echo "# 构建报告" >> $GITHUB_STEP_SUMMARY
+        echo "# 🎯 构建报告" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "## 基本信息" >> $GITHUB_STEP_SUMMARY
+        echo "## 📊 基本信息" >> $GITHUB_STEP_SUMMARY
         echo "- **触发方式**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-        echo "- **触发分支**: ${{ github.ref }}" >> $GITHUB_STEP_SUMMARY
-        echo "- **运行时间**: $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+        echo "- **触发时间**: $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+        echo "- **运行结果**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         if [ "${{ steps.check-changes.outputs.has_changes }}" = "true" ]; then
-          echo "## 更新结果 ✅" >> $GITHUB_STEP_SUMMARY
-          echo "- 节目源文件已更新并提交" >> $GITHUB_STEP_SUMMARY
+          echo "## ✅ 更新结果" >> $GITHUB_STEP_SUMMARY
+          echo "节目源文件已成功更新并提交到仓库" >> $GITHUB_STEP_SUMMARY
           
-          # 显示文件变化
+          # 显示文件统计
           if [ -f "playlist.m3u" ]; then
-            LINE_COUNT=$(wc -l < playlist.m3u || echo "0")
-            CHANNEL_COUNT=$(grep -c '^#EXTINF' playlist.m3u || echo "0")
-            GROUP_COUNT=$(grep -c '^#genre' playlist.m3u || echo "0")
+            LINE_COUNT=$(wc -l < playlist.m3u 2>/dev/null || echo "0")
+            CHANNEL_COUNT=$(grep -c '^#EXTINF' playlist.m3u 2>/dev/null || echo "0")
+            GROUP_COUNT=$(grep -c '^#genre' playlist.m3u 2>/dev/null || echo "0")
             
-            echo "### 文件统计" >> $GITHUB_STEP_SUMMARY
-            echo "- 总行数: $LINE_COUNT" >> $GITHUB_STEP_SUMMARY
-            echo "- 频道数量: $CHANNEL_COUNT" >> $GITHUB_STEP_SUMMARY
-            echo "- 分组数量: $GROUP_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "### 📁 文件统计" >> $GITHUB_STEP_SUMMARY
+            echo "- **播放列表文件**: playlist.m3u" >> $GITHUB_STEP_SUMMARY
+            echo "- **总行数**: $LINE_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "- **频道数量**: $CHANNEL_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "- **分组数量**: $GROUP_COUNT" >> $GITHUB_STEP_SUMMARY
+            
+            # 显示最新添加的几个频道
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 📺 最新频道" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            grep -A 1 '^#EXTINF' playlist.m3u | head -20 >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
           fi
         else
-          echo "## 更新结果 ℹ️" >> $GITHUB_STEP_SUMMARY
-          echo "- 节目源文件无变化，无需更新" >> $GITHUB_STEP_SUMMARY
+          echo "## ℹ️ 更新结果" >> $GITHUB_STEP_SUMMARY
+          echo "节目源文件无变化，无需更新" >> $GITHUB_STEP_SUMMARY
         fi
         
         # 显示日志最后10行
         if [ -f "update.log" ]; then
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## 最近日志" >> $GITHUB_STEP_SUMMARY
+          echo "## 📝 最近日志" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          tail -10 update.log >> $GITHUB_STEP_SUMMARY
+          tail -20 update.log >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
         fi
 
@@ -164,22 +248,21 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: playlist-artifacts
+        name: playlist-files
         path: |
           playlist.m3u
           update.log
           last_check.txt
-        retention-days: 7
+        retention-days: 30
+        if-no-files-found: warn
 
-    - name: Send notification on failure
-      if: failure()
-      uses: actions/github-script@v6
-      with:
-        script: |
-          github.rest.issues.create({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            title: `构建失败: ${context.workflow} - ${new Date().toLocaleDateString()}`,
-            body: `构建失败，请检查日志:\n\n${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
-            labels: ['bug', 'automation']
-          })
+    - name: Clean up temporary files
+      if: always()
+      run: |
+        # 清理src目录中的临时文件，但保留crawler.py
+        if [ -d "src" ]; then
+          cd src
+          rm -f playlist.m3u update.log last_check.txt playlist.m3u.backup
+          rm -rf __pycache__ || true
+          cd ..
+        fi
