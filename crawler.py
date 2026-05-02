@@ -22,9 +22,8 @@ def fetch_webpage(url):
 def parse_channels(text):
     groups = {}
     current_group = None
-    phoenix_channels = []   # 收集凤凰台节目
+    phoenix_channels = []   
 
-    # 只保留以下组
     keep_groups = ["央卫咪咕", "特新Pdtv", "欣赏频道", "特闽Hktv", "央卫高码"]
 
     for line in text.splitlines():
@@ -32,59 +31,56 @@ def parse_channels(text):
         if not line:
             continue
 
-        # 识别分组行
         if ',' in line and '#genre#' in line:
             current_group = line.split(',', 1)[0].strip()
             if current_group in keep_groups:
                 groups.setdefault(current_group, [])
             else:
-                current_group = None  # 不保留的组直接跳过
+                current_group = None
             continue
 
-        # 频道行处理
         if current_group and ',' in line:
             channel_name, stream_url = line.split(',', 1)
             channel_name = channel_name.strip()
             stream_url = stream_url.strip()
 
-            # ==================== 凤凰台特殊处理 ====================
-            # 从特新Pdtv中提取所有凤凰台
+            # 提取凤凰台
             if current_group == "特新Pdtv" and "凤凰" in channel_name:
                 phoenix_channels.append((channel_name, stream_url))
                 continue
 
-            # 正常加入对应组
             if current_group in groups:
                 groups[current_group].append((channel_name, stream_url))
 
-    # 将凤凰台放到央卫高码组的最前面
+    # 凤凰台放到央卫高码最前面
     if phoenix_channels and "央卫高码" in groups:
         groups["央卫高码"] = phoenix_channels + groups["央卫高码"]
     elif phoenix_channels:
         groups["央卫高码"] = phoenix_channels
 
-    # 移除空组
     return {g: chs for g, chs in groups.items() if chs}
 
 
 def save_m3u(groups, filename):
-    """生成M3U文件"""
+    """生成M3U文件 - 自定义组顺序"""
+    # ============ 自定义输出顺序（央卫高码放最前面）============
+    group_order = ["央卫高码", "央卫咪咕", "特新Pdtv", "欣赏频道", "特闽Hktv"]
+    
     with open(filename, 'w', encoding='utf-8') as f:
         f.write('#EXTM3U\n\n')
-        for group, channels in groups.items():
-            if not channels:
-                continue
-            f.write(f"#{group}\n")
-            for channel_name, stream_url in channels:
-                f.write(f'#EXTINF:-1 group-title="{group}", {channel_name}\n')
-                f.write(stream_url + "\n")
+        
+        for group in group_order:
+            if group in groups and groups[group]:
+                f.write(f"#{group}\n")
+                for channel_name, stream_url in groups[group]:
+                    f.write(f'#EXTINF:-1 group-title="{group}", {channel_name}\n')
+                    f.write(stream_url + "\n")
     
-    total = sum(len(ch) for ch in groups.values())
+    total = sum(len(chs) for chs in groups.values())
     print(f"写入文件 {filename} 完成，节目总数：{total} 条。")
 
 
 def git_commit_and_push(filename):
-    """Git 提交推送"""
     subprocess.run(["git", "add", filename])
     subprocess.run(["git", "commit", "-m", "更新 playlist.m3u"])
     subprocess.run(["git", "push"])
@@ -108,7 +104,6 @@ def main():
     print("生成M3U文件……")
     save_m3u(groups, filename)
     
-    # 提交并推送
     git_commit_and_push(filename)
 
 
