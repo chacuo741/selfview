@@ -1,480 +1,158 @@
 #EXTM3U
 
-#央卫高码
-#EXTINF:-1 group-title="央卫高码", 凤凰中文Pdtv
-http://rihou.cc:555/tv/[Pd]凤凰中文
-#EXTINF:-1 group-title="央卫高码", 凤凰资讯Pdtv
-http://rihou.cc:555/tv/[Pd]凤凰资讯
-#EXTINF:-1 group-title="央卫高码", 凤凰香港Pdtv
-http://rihou.cc:555/tv/[Pd]凤凰香港
 #央卫咪咕
 #EXTINF:-1 group-title="央卫咪咕", CCTV-01咪咕
-http://42.194.148.122:1234/608807420
+http://1.202.119.183:15500/608807420
 #EXTINF:-1 group-title="央卫咪咕", CCTV-02咪咕
-http://42.194.148.122:1234/631780532
+http://1.202.119.183:15500/631780532
 #EXTINF:-1 group-title="央卫咪咕", CCTV-03咪咕
-http://42.194.148.122:1234/624878271
+http://1.202.119.183:15500/624878271
 #EXTINF:-1 group-title="央卫咪咕", CCTV-04咪咕
-http://42.194.148.122:1234/631780421
+http://1.202.119.183:15500/631780421
 #EXTINF:-1 group-title="央卫咪咕", CCTV-05咪咕
-http://42.194.148.122:1234/641886683
+http://1.202.119.183:15500/641886683
 #EXTINF:-1 group-title="央卫咪咕", CCTV-5+咪咕
-http://42.194.148.122:1234/641886773
+http://1.202.119.183:15500/641886773
 #EXTINF:-1 group-title="央卫咪咕", CCTV-06咪咕
-http://42.194.148.122:1234/624878396
+http://1.202.119.183:15500/624878396
 #EXTINF:-1 group-title="央卫咪咕", CCTV-07咪咕
-http://42.194.148.122:1234/673168121
+http://1.202.119.183:15500/673168121
 #EXTINF:-1 group-title="央卫咪咕", CCTV-08咪咕
-http://42.194.148.122:1234/624878356
+http://1.202.119.183:15500/624878356
 #EXTINF:-1 group-title="央卫咪咕", CCTV-09咪咕
-http://42.194.148.122:1234/673168140
+http://1.202.119.183:15500/673168140
 #EXTINF:-1 group-title="央卫咪咕", CCTV-10咪咕
-http://42.194.148.122:1234/624878405
+http://1.202.119.183:15500/624878405
 #EXTINF:-1 group-title="央卫咪咕", CCTV-11咪咕
-http://42.194.148.122:1234/667987558
+http://1.202.119.183:15500/667987558
 #EXTINF:-1 group-title="央卫咪咕", CCTV-12咪咕
-http://42.194.148.122:1234/673168185
+http://1.202.119.183:15500/673168185
 #EXTINF:-1 group-title="央卫咪咕", CCTV-13咪咕
-http://42.194.148.122:1234/608807423
+http://1.202.119.183:15500/608807423
 #EXTINF:-1 group-title="央卫咪咕", CCTV-14咪咕
-http://42.194.148.122:1234/624878440
+http://1.202.119.183:15500/624878440
 #EXTINF:-1 group-title="央卫咪咕", CCTV-15咪咕
-http://42.194.148.122:1234/673168223
+http://1.202.119.183:15500/673168223
 #EXTINF:-1 group-title="央卫咪咕", CCTV-16咪咕
 http://58.255.201.70:10443/tsfile/live/1001_1.m3u8
 #EXTINF:-1 group-title="央卫咪咕", CCTV-17咪咕
-http://42.194.148.122:1234/673168256
+http://1.202.119.183:15500/673168256
 #EXTINF:-1 group-title="央卫咪咕", cct4欧洲咪咕
-http://42.194.148.122:1234/608807419
+http://1.202.119.183:15500/608807419
 #EXTINF:-1 group-title="央卫咪咕", cct4美洲咪咕
-http://42.194.148.122:1234/608807416
+http://1.202.119.183:15500/608807416
 #EXTINF:-1 group-title="央卫咪咕", CGTN-西咪咕
-http://42.194.148.122:1234/609006450
+http://1.202.119.183:15500/609006450
 #EXTINF:-1 group-title="央卫咪咕", CGTN-阿咪咕
-http://42.194.148.122:1234/609154345
+http://1.202.119.183:15500/609154345
 #EXTINF:-1 group-title="央卫咪咕", CGTN-法咪咕
-http://42.194.148.122:1234/609006476
+http://1.202.119.183:15500/609006476
 #EXTINF:-1 group-title="央卫咪咕", 北京卫视咪咕
-http://42.194.148.122:1234/630287636
+http://1.202.119.183:15500/630287636
 #EXTINF:-1 group-title="央卫咪咕", 东方卫视咪咕
-http://42.194.148.122:1234/651632648
+http://1.202.119.183:15500/651632648
 #EXTINF:-1 group-title="央卫咪咕", 浙江卫视咪咕
 http://rihou.cc:555/tv/[mg]浙江卫视
 #EXTINF:-1 group-title="央卫咪咕", 江苏卫视咪咕
-http://42.194.148.122:1234/623899368
+http://1.202.119.183:15500/623899368
 #EXTINF:-1 group-title="央卫咪咕", 湖南卫视咪咕
 http://rihou.cc:555/tv/[mg]湖南卫视
 #EXTINF:-1 group-title="央卫咪咕", 广东卫视咪咕
-http://42.194.148.122:1234/608831231
+http://1.202.119.183:15500/608831231
 #EXTINF:-1 group-title="央卫咪咕", 深圳卫视咪咕
 http://rihou.cc:555/tv/[mg]深圳卫视
 #EXTINF:-1 group-title="央卫咪咕", 山东卫视咪咕
 http://rihou.cc:555/tv/[mg]山东卫视
 #EXTINF:-1 group-title="央卫咪咕", 河南卫视咪咕
-http://42.194.148.122:1234/790187291
+http://1.202.119.183:15500/790187291
 #EXTINF:-1 group-title="央卫咪咕", 江西卫视咪咕
-http://42.194.148.122:1234/783847495
+http://1.202.119.183:15500/783847495
 #EXTINF:-1 group-title="央卫咪咕", 湖北卫视咪咕
-http://42.194.148.122:1234/947472496
+http://1.202.119.183:15500/947472496
 #EXTINF:-1 group-title="央卫咪咕", 海南卫视咪咕
-http://42.194.148.122:1234/947472502
+http://1.202.119.183:15500/947472502
 #EXTINF:-1 group-title="央卫咪咕", 陕西卫视咪咕
-http://42.194.148.122:1234/738910838
+http://1.202.119.183:15500/738910838
 #EXTINF:-1 group-title="央卫咪咕", 兵团卫视咪咕
-http://42.194.148.122:1234/956923145
+http://1.202.119.183:15500/956923145
 #EXTINF:-1 group-title="央卫咪咕", 黑龙江视咪咕
-http://42.194.148.122:1234/738906901
+http://1.202.119.183:15500/738906901
 #EXTINF:-1 group-title="央卫咪咕", CCTV-01咪咕
-http://rihou.cc:555/tv/[mg]CCTV-01
+http://mg.cttv.vip/608807420
 #EXTINF:-1 group-title="央卫咪咕", CCTV-02咪咕
-http://rihou.cc:555/tv/[mg]CCTV-02
+http://mg.cttv.vip/631780532
 #EXTINF:-1 group-title="央卫咪咕", CCTV-03咪咕
-http://rihou.cc:555/tv/[mg]CCTV-03
+http://mg.cttv.vip/624878271
 #EXTINF:-1 group-title="央卫咪咕", CCTV-04咪咕
-http://rihou.cc:555/tv/[mg]CCTV-04
+http://mg.cttv.vip/631780421
 #EXTINF:-1 group-title="央卫咪咕", CCTV-05咪咕
-http://rihou.cc:555/tv/[mg]CCTV-05
+http://mg.cttv.vip/641886683
 #EXTINF:-1 group-title="央卫咪咕", CCTV-5+咪咕
-http://rihou.cc:555/tv/[mg]CCTV-5p
+http://mg.cttv.vip/641886773
 #EXTINF:-1 group-title="央卫咪咕", CCTV-06咪咕
-http://rihou.cc:555/tv/[mg]CCTV-06
+http://mg.cttv.vip/624878396
 #EXTINF:-1 group-title="央卫咪咕", CCTV-07咪咕
-http://rihou.cc:555/tv/[mg]CCTV-07
+http://mg.cttv.vip/673168121
 #EXTINF:-1 group-title="央卫咪咕", CCTV-08咪咕
-http://rihou.cc:555/tv/[mg]CCTV-08
+http://mg.cttv.vip/624878356
 #EXTINF:-1 group-title="央卫咪咕", CCTV-09咪咕
-http://rihou.cc:555/tv/[mg]CCTV-09
+http://mg.cttv.vip/673168140
 #EXTINF:-1 group-title="央卫咪咕", CCTV-10咪咕
-http://rihou.cc:555/tv/[mg]CCTV-10
+http://mg.cttv.vip/624878405
 #EXTINF:-1 group-title="央卫咪咕", CCTV-11咪咕
-http://rihou.cc:555/tv/[mg]CCTV-11
+http://mg.cttv.vip/667987558
 #EXTINF:-1 group-title="央卫咪咕", CCTV-12咪咕
-http://rihou.cc:555/tv/[mg]CCTV-12
+http://mg.cttv.vip/673168185
 #EXTINF:-1 group-title="央卫咪咕", CCTV-13咪咕
-http://rihou.cc:555/tv/[mg]CCTV-13
+http://mg.cttv.vip/608807423
 #EXTINF:-1 group-title="央卫咪咕", CCTV-14咪咕
-http://rihou.cc:555/tv/[mg]CCTV-14
+http://mg.cttv.vip/624878440
 #EXTINF:-1 group-title="央卫咪咕", CCTV-15咪咕
-http://rihou.cc:555/tv/[mg]CCTV-15
+http://mg.cttv.vip/673168223
 #EXTINF:-1 group-title="央卫咪咕", CCTV-16咪咕
-http://rihou.cc:555/tv/[mg]CCTV-16
+http://58.255.201.70:10443/tsfile/live/1001_1.m3u8
 #EXTINF:-1 group-title="央卫咪咕", CCTV-17咪咕
-http://rihou.cc:555/tv/[mg]CCTV-17
+http://mg.cttv.vip/673168256
 #EXTINF:-1 group-title="央卫咪咕", cct4欧洲咪咕
-http://rihou.cc:555/tv/[mg]cct4欧洲
+http://mg.cttv.vip/608807419
 #EXTINF:-1 group-title="央卫咪咕", cct4美洲咪咕
-http://rihou.cc:555/tv/[mg]cct4美洲
+http://mg.cttv.vip/608807416
 #EXTINF:-1 group-title="央卫咪咕", CGTN-西咪咕
-http://rihou.cc:555/tv/[mg]CGTN-西
+http://mg.cttv.vip/609006450
 #EXTINF:-1 group-title="央卫咪咕", CGTN-阿咪咕
-http://rihou.cc:555/tv/[mg]CGTN-阿
+http://mg.cttv.vip/609154345
 #EXTINF:-1 group-title="央卫咪咕", CGTN-法咪咕
-http://rihou.cc:555/tv/[mg]CGTN-法
+http://mg.cttv.vip/609006476
 #EXTINF:-1 group-title="央卫咪咕", 北京卫视咪咕
-http://rihou.cc:555/tv/[mg]北京卫视
+http://mg.cttv.vip/630287636
 #EXTINF:-1 group-title="央卫咪咕", 东方卫视咪咕
-http://rihou.cc:555/tv/[mg]东方卫视
+http://mg.cttv.vip/651632648
 #EXTINF:-1 group-title="央卫咪咕", 浙江卫视咪咕
 http://rihou.cc:555/tv/[mg]浙江卫视
 #EXTINF:-1 group-title="央卫咪咕", 江苏卫视咪咕
-http://rihou.cc:555/tv/[mg]江苏卫视
+http://mg.cttv.vip/623899368
 #EXTINF:-1 group-title="央卫咪咕", 湖南卫视咪咕
 http://rihou.cc:555/tv/[mg]湖南卫视
 #EXTINF:-1 group-title="央卫咪咕", 广东卫视咪咕
-http://rihou.cc:555/tv/[mg]广东卫视
+http://mg.cttv.vip/608831231
 #EXTINF:-1 group-title="央卫咪咕", 深圳卫视咪咕
 http://rihou.cc:555/tv/[mg]深圳卫视
 #EXTINF:-1 group-title="央卫咪咕", 山东卫视咪咕
 http://rihou.cc:555/tv/[mg]山东卫视
 #EXTINF:-1 group-title="央卫咪咕", 河南卫视咪咕
-http://rihou.cc:555/tv/[mg]河南卫视
+http://mg.cttv.vip/790187291
 #EXTINF:-1 group-title="央卫咪咕", 江西卫视咪咕
-http://rihou.cc:555/tv/[mg]江西卫视
+http://mg.cttv.vip/783847495
 #EXTINF:-1 group-title="央卫咪咕", 湖北卫视咪咕
-http://rihou.cc:555/tv/[mg]湖北卫视
+http://mg.cttv.vip/947472496
 #EXTINF:-1 group-title="央卫咪咕", 海南卫视咪咕
-http://rihou.cc:555/tv/[mg]海南卫视
+http://mg.cttv.vip/947472502
 #EXTINF:-1 group-title="央卫咪咕", 陕西卫视咪咕
-http://rihou.cc:555/tv/[mg]陕西卫视
+http://mg.cttv.vip/738910838
 #EXTINF:-1 group-title="央卫咪咕", 兵团卫视咪咕
-http://rihou.cc:555/tv/[mg]兵团卫视
+http://mg.cttv.vip/956923145
 #EXTINF:-1 group-title="央卫咪咕", 黑龙江视咪咕
-http://rihou.cc:555/tv/[mg]黑龙江视
-#EXTINF:-1 group-title="央卫咪咕", CCTV-01咪咕
-http://go.bkpcp.top/mg/cctv1
-#EXTINF:-1 group-title="央卫咪咕", CCTV-02咪咕
-http://go.bkpcp.top/mg/cctv2
-#EXTINF:-1 group-title="央卫咪咕", CCTV-03咪咕
-http://go.bkpcp.top/mg/cctv3
-#EXTINF:-1 group-title="央卫咪咕", CCTV-04咪咕
-http://go.bkpcp.top/mg/cctv4
-#EXTINF:-1 group-title="央卫咪咕", CCTV-05咪咕
-http://go.bkpcp.top/mg/cctv5
-#EXTINF:-1 group-title="央卫咪咕", CCTV-5+咪咕
-http://go.bkpcp.top/mg/cctv5p
-#EXTINF:-1 group-title="央卫咪咕", CCTV-06咪咕
-http://go.bkpcp.top/mg/cctv6
-#EXTINF:-1 group-title="央卫咪咕", CCTV-07咪咕
-http://go.bkpcp.top/mg/cctv7
-#EXTINF:-1 group-title="央卫咪咕", CCTV-08咪咕
-http://go.bkpcp.top/mg/cctv8
-#EXTINF:-1 group-title="央卫咪咕", CCTV-09咪咕
-http://go.bkpcp.top/mg/cctv9
-#EXTINF:-1 group-title="央卫咪咕", CCTV-10咪咕
-http://go.bkpcp.top/mg/cctv10
-#EXTINF:-1 group-title="央卫咪咕", CCTV-11咪咕
-http://go.bkpcp.top/mg/cctv11
-#EXTINF:-1 group-title="央卫咪咕", CCTV-12咪咕
-http://go.bkpcp.top/mg/cctv12
-#EXTINF:-1 group-title="央卫咪咕", CCTV-13咪咕
-http://go.bkpcp.top/mg/cctv13
-#EXTINF:-1 group-title="央卫咪咕", CCTV-14咪咕
-http://go.bkpcp.top/mg/cctv14
-#EXTINF:-1 group-title="央卫咪咕", CCTV-15咪咕
-http://go.bkpcp.top/mg/cctv15
-#EXTINF:-1 group-title="央卫咪咕", CCTV-16咪咕
-http://go.bkpcp.top/mg/cctv16
-#EXTINF:-1 group-title="央卫咪咕", CCTV-17咪咕
-http://go.bkpcp.top/mg/cctv17
-#EXTINF:-1 group-title="央卫咪咕", cct4欧洲咪咕
-http://go.bkpcp.top/mg/cctv4o
-#EXTINF:-1 group-title="央卫咪咕", cct4美洲咪咕
-http://go.bkpcp.top/mg/cctv4m
-#EXTINF:-1 group-title="央卫咪咕", CGTN-西咪咕
-http://go.bkpcp.top/mg/cgtne
-#EXTINF:-1 group-title="央卫咪咕", CGTN-阿咪咕
-http://go.bkpcp.top/mg/cgtna
-#EXTINF:-1 group-title="央卫咪咕", CGTN-法咪咕
-http://go.bkpcp.top/mg/cgtnf
-#EXTINF:-1 group-title="央卫咪咕", 北京卫视咪咕
-http://go.bkpcp.top/mg/bjws
-#EXTINF:-1 group-title="央卫咪咕", 东方卫视咪咕
-http://go.bkpcp.top/mg/dfws
-#EXTINF:-1 group-title="央卫咪咕", 浙江卫视咪咕
-http://go.bkpcp.top/mg/zjws
-#EXTINF:-1 group-title="央卫咪咕", 江苏卫视咪咕
-http://go.bkpcp.top/mg/jsws
-#EXTINF:-1 group-title="央卫咪咕", 湖南卫视咪咕
-http://go.bkpcp.top/mg/hunws
-#EXTINF:-1 group-title="央卫咪咕", 广东卫视咪咕
-http://go.bkpcp.top/mg/gdws
-#EXTINF:-1 group-title="央卫咪咕", 深圳卫视咪4k
-http://go.bkpcp.top/mg/szws
-#EXTINF:-1 group-title="央卫咪咕", 山东卫视咪咕
-http://go.bkpcp.top/mg/sdws
-#EXTINF:-1 group-title="央卫咪咕", 河南卫视咪咕
-http://go.bkpcp.top/mg/hnws
-#EXTINF:-1 group-title="央卫咪咕", 江西卫视咪咕
-http://go.bkpcp.top/mg/jxws
-#EXTINF:-1 group-title="央卫咪咕", 湖北卫视咪咕
-http://go.bkpcp.top/mg/hubws
-#EXTINF:-1 group-title="央卫咪咕", 海南卫视咪咕
-http://go.bkpcp.top/mg/hinws
-#EXTINF:-1 group-title="央卫咪咕", 陕西卫视咪咕
-http://go.bkpcp.top/mg/sxws
-#EXTINF:-1 group-title="央卫咪咕", 兵团卫视咪咕
-http://go.bkpcp.top/mg/btws
-#EXTINF:-1 group-title="央卫咪咕", 黑龙江视咪咕
-http://go.bkpcp.top/mg/hljws
-#EXTINF:-1 group-title="央卫咪咕", CCTV-01咪咕
-http://j.s.bkpcp.top/jj/cctv1
-#EXTINF:-1 group-title="央卫咪咕", CCTV-02咪咕
-http://j.s.bkpcp.top/jj/cctv2
-#EXTINF:-1 group-title="央卫咪咕", CCTV-03咪咕
-http://j.s.bkpcp.top/jj/cctv3
-#EXTINF:-1 group-title="央卫咪咕", CCTV-04咪咕
-http://j.s.bkpcp.top/jj/cctv4
-#EXTINF:-1 group-title="央卫咪咕", CCTV-05咪咕
-http://j.s.bkpcp.top/jj/cctv5
-#EXTINF:-1 group-title="央卫咪咕", CCTV-5+咪咕
-http://j.s.bkpcp.top/jj/cctv5p
-#EXTINF:-1 group-title="央卫咪咕", CCTV-06咪咕
-http://j.s.bkpcp.top/jj/cctv6
-#EXTINF:-1 group-title="央卫咪咕", CCTV-07咪咕
-http://j.s.bkpcp.top/jj/cctv7
-#EXTINF:-1 group-title="央卫咪咕", CCTV-08咪咕
-http://j.s.bkpcp.top/jj/cctv8
-#EXTINF:-1 group-title="央卫咪咕", CCTV-09咪咕
-http://j.s.bkpcp.top/jj/cctv9
-#EXTINF:-1 group-title="央卫咪咕", CCTV-10咪咕
-http://j.s.bkpcp.top/jj/cctv10
-#EXTINF:-1 group-title="央卫咪咕", CCTV-11咪咕
-http://j.s.bkpcp.top/jj/cctv11
-#EXTINF:-1 group-title="央卫咪咕", CCTV-12咪咕
-http://j.s.bkpcp.top/jj/cctv12
-#EXTINF:-1 group-title="央卫咪咕", CCTV-13咪咕
-http://j.s.bkpcp.top/jj/cctv13
-#EXTINF:-1 group-title="央卫咪咕", CCTV-14咪咕
-http://j.s.bkpcp.top/jj/cctv14
-#EXTINF:-1 group-title="央卫咪咕", CCTV-15咪咕
-http://j.s.bkpcp.top/jj/cctv15
-#EXTINF:-1 group-title="央卫咪咕", CCTV-16咪咕
-http://j.s.bkpcp.top/jj/cctv16
-#EXTINF:-1 group-title="央卫咪咕", CCTV-17咪咕
-http://j.s.bkpcp.top/jj/cctv17
-#EXTINF:-1 group-title="央卫咪咕", cct4欧洲咪咕
-http://j.s.bkpcp.top/jj/cctv4o
-#EXTINF:-1 group-title="央卫咪咕", cct4美洲咪咕
-http://j.s.bkpcp.top/jj/cctv4m
-#EXTINF:-1 group-title="央卫咪咕", CGTN-西咪咕
-http://j.s.bkpcp.top/jj/cgtne
-#EXTINF:-1 group-title="央卫咪咕", CGTN-阿咪咕
-http://j.s.bkpcp.top/jj/cgtna
-#EXTINF:-1 group-title="央卫咪咕", CGTN-法咪咕
-http://j.s.bkpcp.top/jj/cgtnf
-#EXTINF:-1 group-title="央卫咪咕", 北京卫视咪咕
-http://j.s.bkpcp.top/jj/bjws
-#EXTINF:-1 group-title="央卫咪咕", 东方卫视咪咕
-http://j.s.bkpcp.top/jj/dfws
-#EXTINF:-1 group-title="央卫咪咕", 浙江卫视咪咕
-http://j.s.bkpcp.top/jj/zjws
-#EXTINF:-1 group-title="央卫咪咕", 江苏卫视咪咕
-http://j.s.bkpcp.top/jj/jsws
-#EXTINF:-1 group-title="央卫咪咕", 湖南卫视咪咕
-http://j.s.bkpcp.top/jj/hunws
-#EXTINF:-1 group-title="央卫咪咕", 广东卫视咪咕
-http://j.s.bkpcp.top/jj/gdws
-#EXTINF:-1 group-title="央卫咪咕", 深圳卫视咪4k
-http://j.s.bkpcp.top/jj/szws
-#EXTINF:-1 group-title="央卫咪咕", 山东卫视咪咕
-http://j.s.bkpcp.top/jj/sdws
-#EXTINF:-1 group-title="央卫咪咕", 河南卫视咪咕
-http://j.s.bkpcp.top/jj/hnws
-#EXTINF:-1 group-title="央卫咪咕", 江西卫视咪咕
-http://j.s.bkpcp.top/jj/jxws
-#EXTINF:-1 group-title="央卫咪咕", 湖北卫视咪咕
-http://j.s.bkpcp.top/jj/hubws
-#EXTINF:-1 group-title="央卫咪咕", 海南卫视咪咕
-http://j.s.bkpcp.top/jj/hinws
-#EXTINF:-1 group-title="央卫咪咕", 陕西卫视咪咕
-http://j.s.bkpcp.top/jj/sxws
-#EXTINF:-1 group-title="央卫咪咕", 兵团卫视咪咕
-http://j.s.bkpcp.top/jj/btws
-#EXTINF:-1 group-title="央卫咪咕", 黑龙江视咪咕
-http://j.s.bkpcp.top/jj/hljws
-#EXTINF:-1 group-title="央卫咪咕", CCTV-01咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv1
-#EXTINF:-1 group-title="央卫咪咕", CCTV-02咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv2
-#EXTINF:-1 group-title="央卫咪咕", CCTV-03咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv3
-#EXTINF:-1 group-title="央卫咪咕", CCTV-04咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv4
-#EXTINF:-1 group-title="央卫咪咕", CCTV-05咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv5
-#EXTINF:-1 group-title="央卫咪咕", CCTV-5+咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv5p
-#EXTINF:-1 group-title="央卫咪咕", CCTV-06咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv6
-#EXTINF:-1 group-title="央卫咪咕", CCTV-07咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv7
-#EXTINF:-1 group-title="央卫咪咕", CCTV-08咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv8
-#EXTINF:-1 group-title="央卫咪咕", CCTV-09咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv9
-#EXTINF:-1 group-title="央卫咪咕", CCTV-10咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv10
-#EXTINF:-1 group-title="央卫咪咕", CCTV-11咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv11
-#EXTINF:-1 group-title="央卫咪咕", CCTV-12咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv12
-#EXTINF:-1 group-title="央卫咪咕", CCTV-13咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv13
-#EXTINF:-1 group-title="央卫咪咕", CCTV-14咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv14
-#EXTINF:-1 group-title="央卫咪咕", CCTV-15咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv15
-#EXTINF:-1 group-title="央卫咪咕", CCTV-16咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv16
-#EXTINF:-1 group-title="央卫咪咕", CCTV-17咪咕
-http://t.061899.xyz/tl/tl.php?id=cctv17
-#EXTINF:-1 group-title="央卫咪咕", 北京卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=bjws
-#EXTINF:-1 group-title="央卫咪咕", 东方卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=dfws
-#EXTINF:-1 group-title="央卫咪咕", 浙江卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=zjws
-#EXTINF:-1 group-title="央卫咪咕", 江苏卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=jsws
-#EXTINF:-1 group-title="央卫咪咕", 湖南卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=hunws
-#EXTINF:-1 group-title="央卫咪咕", 广东卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=gdws
-#EXTINF:-1 group-title="央卫咪咕", 深圳卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=szws
-#EXTINF:-1 group-title="央卫咪咕", 天津卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=tjws
-#EXTINF:-1 group-title="央卫咪咕", 安徽卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=ahws
-#EXTINF:-1 group-title="央卫咪咕", 山东卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=sdws
-#EXTINF:-1 group-title="央卫咪咕", 山西卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=sxiws
-#EXTINF:-1 group-title="央卫咪咕", 辽宁卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=lnws
-#EXTINF:-1 group-title="央卫咪咕", 河北卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=hbws
-#EXTINF:-1 group-title="央卫咪咕", 河南卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=hnws
-#EXTINF:-1 group-title="央卫咪咕", 江西卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=jxws
-#EXTINF:-1 group-title="央卫咪咕", 四川卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=scws
-#EXTINF:-1 group-title="央卫咪咕", 重庆卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=cqws
-#EXTINF:-1 group-title="央卫咪咕", 贵州卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=gzws
-#EXTINF:-1 group-title="央卫咪咕", 湖北卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=hubws
-#EXTINF:-1 group-title="央卫咪咕", 广西卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=gxws
-#EXTINF:-1 group-title="央卫咪咕", 东南卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=dnws
-#EXTINF:-1 group-title="央卫咪咕", 海南卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=hinws
-#EXTINF:-1 group-title="央卫咪咕", 青海卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=qhws
-#EXTINF:-1 group-title="央卫咪咕", 宁夏卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=nxws
-#EXTINF:-1 group-title="央卫咪咕", 陕西卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=sxws
-#EXTINF:-1 group-title="央卫咪咕", 甘肃卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=gsws
-#EXTINF:-1 group-title="央卫咪咕", 新疆卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=xjws
-#EXTINF:-1 group-title="央卫咪咕", 吉林卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=jlws
-#EXTINF:-1 group-title="央卫咪咕", 西藏卫视咪咕
-http://t.061899.xyz/tl/tl.php?id=xzws
-#EXTINF:-1 group-title="央卫咪咕", 内蒙古视咪咕
-http://t.061899.xyz/tl/tl.php?id=nmgws
-#EXTINF:-1 group-title="央卫咪咕", 黑龙江视咪咕
-http://t.061899.xyz/tl/tl.php?id=hljws
-#特新Pdtv
-#EXTINF:-1 group-title="特新Pdtv", Plus综合Pdtv
-http://rihou.cc:555/tv/[Pd]Plus综合
-#EXTINF:-1 group-title="特新Pdtv", 有线新闻Pdtv
-http://rihou.cc:555/tv/[Pd]有线新闻
-#EXTINF:-1 group-title="特新Pdtv", 有线综合Pdtv
-http://rihou.cc:555/tv/[Pd]有线综合
-#EXTINF:-1 group-title="特新Pdtv", 有线亚剧Pdtv
-http://rihou.cc:555/tv/[Pd]有线亚剧
-#EXTINF:-1 group-title="特新Pdtv", 无线新闻Pdtv
-http://rihou.cc:555/tv/[Pd]无线新闻
-#EXTINF:-1 group-title="特新Pdtv", 无线翡翠Pdtv
-http://rihou.cc:555/tv/[Pd]无线翡翠
-#EXTINF:-1 group-title="特新Pdtv", 无线翡翠4Ktv
-http://rihou.cc:555/tv/[Pd]无线翡4K
-#EXTINF:-1 group-title="特新Pdtv", 无线华丽Pdtv
-http://rihou.cc:555/tv/[Pd]无线华丽
-#EXTINF:-1 group-title="特新Pdtv", 无线明珠Pdtv
-http://rihou.cc:555/tv/[Pd]无线明珠
-#EXTINF:-1 group-title="特新Pdtv", 无线翡剧Pdtv
-http://rihou.cc:555/tv/[Pd]无线翡剧
-#EXTINF:-1 group-title="特新Pdtv", 无线娱乐Pdtv
-http://rihou.cc:555/tv/[Pd]无线娱乐|
-#EXTINF:-1 group-title="特新Pdtv", 无线娱乐Pdtv
-http://rihou.cc:555/tv/[Pd]无线娱乐
-#EXTINF:-1 group-title="特新Pdtv", 无线星河Pdtv
-http://rihou.cc:555/tv/[Pd]无线星河
-#EXTINF:-1 group-title="特新Pdtv", 无线经典Pdtv
-http://rihou.cc:555/tv/[Pd]无线经典
-#EXTINF:-1 group-title="特新Pdtv", 无线功夫Pdtv
-http://rihou.cc:555/tv/[Pd]无线功夫
-#EXTINF:-1 group-title="特新Pdtv", 澳视澳门Pdtv
-http://rihou.cc:555/tv/[Pd]澳视澳门
-#EXTINF:-1 group-title="特新Pdtv", 澳视卫星Pdtv
-http://rihou.cc:555/tv/[Pd]澳视卫星
-#EXTINF:-1 group-title="特新Pdtv", 澳门体育Pdtv
-http://rihou.cc:555/tv/[Pd]澳门体育
-#EXTINF:-1 group-title="特新Pdtv", 澳门综艺Pdtv
-http://rihou.cc:555/tv/[Pd]澳门综艺
-#EXTINF:-1 group-title="特新Pdtv", 澳门莲花Pdtv
-http://rihou.cc:555/tv/[Pd]澳门莲花
-#EXTINF:-1 group-title="特新Pdtv", 央视综合Pdtv
-http://rihou.cc:555/tv/[Pd]央视综合
-#EXTINF:-1 group-title="特新Pdtv", 重温经典Pdtv
-http://rihou.cc:555/tv/[Pd]重温经典
-#EXTINF:-1 group-title="特新Pdtv", 龙华电影Pdtv
-http://rihou.cc:555/tv/[Pd]龙华电影
-#EXTINF:-1 group-title="特新Pdtv", 龙华经典Pdtv
-http://rihou.cc:555/tv/[Pd]龙华经典
-#EXTINF:-1 group-title="特新Pdtv", 龙华偶像Pdtv
-http://rihou.cc:555/tv/[Pd]龙华偶像
-#EXTINF:-1 group-title="特新Pdtv", 龙华日韩Pdtv
-http://rihou.cc:555/tv/[Pd]龙华日韩
-#EXTINF:-1 group-title="特新Pdtv", 龙华戏剧Pdtv
-http://rihou.cc:555/tv/[Pd]龙华戏剧
-#EXTINF:-1 group-title="特新Pdtv", 八度空间Pdtv
-http://rihou.cc:555/tv/[Pd]八度空间
-#EXTINF:-1 group-title="特新Pdtv", CHU综合Pdtv
-http://rihou.cc:555/tv/[Pd]CHU综合
-#EXTINF:-1 group-title="特新Pdtv", CH5综合Pdtv
-http://rihou.cc:555/tv/[Pd]CH5综合
-#EXTINF:-1 group-title="特新Pdtv", CH8综合Pdtv
-http://rihou.cc:555/tv/[Pd]CH8综合
-#EXTINF:-1 group-title="特新Pdtv", astroaodPdtv
-http://rihou.cc:555/tv/[Pd]astroaod
+http://mg.cttv.vip/738906901
 #欣赏频道
 #EXTINF:-1 group-title="欣赏频道", 粤语戏曲欣赏
 http://rihou.cc:555/tv/[Uk]无线戏曲
@@ -1050,70 +728,3 @@ http://8.155.43.98:35455/douyu/4246519
 https://pull.dxhmt.cn/tv/168666456yinyue123477.flv
 #EXTINF:-1 group-title="欣赏频道", 经典音乐频道
 https://pull.dxhmt.cn/tv/168666456yinyuy123477.flv
-#特闽Hktv
-#EXTINF:-1 group-title="特闽Hktv", 中天新闻Hktv
-http://rihou.cc:555/tv/[Hv]中天新聞
-#EXTINF:-1 group-title="特闽Hktv", 寰宇新闻Hktv
-http://rihou.cc:555/tv/[Hk]寰宇新闻
-#EXTINF:-1 group-title="特闽Hktv", 东森新闻Hktv
-http://rihou.cc:555/tv/[Hk]东森新闻
-#EXTINF:-1 group-title="特闽Hktv", 中视新闻Hktv
-http://rihou.cc:555/tv/[Hk]中视新闻
-#EXTINF:-1 group-title="特闽Hktv", tvbS闽南Hktv
-http://rihou.cc:555/tv/[Hv]tvbS闽南
-#EXTINF:-1 group-title="特闽Hktv", 无线体育Hktv
-http://rihou.cc:555/tv/[Hk]无线体育
-#EXTINF:-1 group-title="特闽Hktv", 有线新闻Hktv
-http://rihou.cc:555/tv/[Hk]有线新闻
-#EXTINF:-1 group-title="特闽Hktv", 无线新闻Hktv
-http://rihou.cc:555/tv/[Hk]无线新闻
-#EXTINF:-1 group-title="特闽Hktv", Now新闻Hktv
-http://rihou.cc:555/tv/[Hk]Now新闻
-#EXTINF:-1 group-title="特闽Hktv", Now华剧Hktv
-http://rihou.cc:555/tv/[Hv]Now华剧
-#EXTINF:-1 group-title="特闽Hktv", Now剧集Hktv
-http://rihou.cc:555/tv/[Hv]Now剧集
-#EXTINF:-1 group-title="特闽Hktv", Now紫金Hktv
-http://rihou.cc:555/tv/[Hv]Now紫金
-#EXTINF:-1 group-title="特闽Hktv", Now星影国hk
-http://rihou.cc:555/tv/[Hv]Now星影
-#EXTINF:-1 group-title="特闽Hktv", Now爆谷国hk
-http://rihou.cc:555/tv/[Hv]Now爆谷
-#EXTINF:-1 group-title="特闽Hktv", pₒₚc电影Hktv
-http://rihou.cc:555/tv/[Hv]pₒₚc电影
-#EXTINF:-1 group-title="特闽Hktv", 美亚电影粤hk
-http://rihou.cc:555/tv/[Hv]美亚电影
-#EXTINF:-1 group-title="特闽Hktv", 美亚电影国hk
-http://rihou.cc:555/tv/[Hv]美亚电影|
-#EXTINF:-1 group-title="特闽Hktv", 天映电影Hktv
-http://rihou.cc:555/tv/[Hk]天映电影
-#EXTINF:-1 group-title="特闽Hktv", 天映频道Hktv
-http://rihou.cc:555/tv/[Hk]天映频道
-#EXTINF:-1 group-title="特闽Hktv", 天映频道Hktv
-http://rihou.cc:555/tv/[Hv]天映频道
-#EXTINF:-1 group-title="特闽Hktv", 天映经典Hktv
-http://rihou.cc:555/tv/[Hk]天映经典
-#EXTINF:-1 group-title="特闽Hktv", 天映经典Hktv
-http://rihou.cc:555/tv/[Hv]天映经典
-#EXTINF:-1 group-title="特闽Hktv", 无线功夫国hk
-http://rihou.cc:555/tv/[Hv]无线功夫
-#EXTINF:-1 group-title="特闽Hktv", 无线星河国hk
-http://rihou.cc:555/tv/[Hv]无线星河
-#EXTINF:-1 group-title="特闽Hktv", 无线生活Hktv
-http://rihou.cc:555/tv/[Hv]无线生活
-#EXTINF:-1 group-title="特闽Hktv", 无线翡剧Hktv
-http://rihou.cc:555/tv/[Hv]无线翡剧
-#EXTINF:-1 group-title="特闽Hktv", 无线明剧Hktv
-http://rihou.cc:555/tv/[Hv]无线明剧
-#EXTINF:-1 group-title="特闽Hktv", 无线奖门Hktv
-http://rihou.cc:555/tv/[Hk]无线奖门
-#EXTINF:-1 group-title="特闽Hktv", 无线金曲Hktv
-http://rihou.cc:555/tv/[Hk]无线金曲
-#EXTINF:-1 group-title="特闽Hktv", 黄金翡翠Hktv
-http://rihou.cc:555/tv/[Hk]黄金翡翠
-#EXTINF:-1 group-title="特闽Hktv", 黄金华剧Hktv
-http://rihou.cc:555/tv/[Hv]黄金华剧
-#EXTINF:-1 group-title="特闽Hktv", HUB娱家Hktv
-http://rihou.cc:555/tv/[Hk]HUB娱家
-#EXTINF:-1 group-title="特闽Hktv", HUB都会Hktv
-http://rihou.cc:555/tv/[Hk]HUB都会
