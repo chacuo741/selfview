@@ -24,7 +24,7 @@ def parse_channels(text):
     current_group = None
     phoenix_channels = []   
 
-    keep_groups = ["央卫咪咕", "特新Pdtv", "欣赏频道", "特闽Hktv", "央卫高码"]
+    keep_groups = ["央卫咪咕", "欣赏Pdtv", "欣赏频道", "特闽Hktv"]
 
     for line in text.splitlines():
         line = line.strip()
